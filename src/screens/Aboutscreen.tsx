@@ -48,13 +48,13 @@ export default function AboutScreen() {
                             <Text style={styles.creditName}>André Luís</Text>
                             <Text style={styles.creditRole}>Programador e Desenvolvedor</Text>
                             <View style={styles.links}>
-                                <TouchableOpacity onPress={() => Linking.openURL('https://github.com/andreluis')}>
+                                <TouchableOpacity onPress={() => Linking.openURL('https://github.com/AAndreLuis-dev')}>
                                     <Ionicons name="logo-github" size={24} color="#3A3A3A" />
                                 </TouchableOpacity>
-                                <TouchableOpacity onPress={() => Linking.openURL('https://linkedin.com/in/andreluis')}>
+                                <TouchableOpacity onPress={() => Linking.openURL('https://www.linkedin.com/in/andreluis-dev/')}>
                                     <Ionicons name="logo-linkedin" size={24} color="#3A3A3A" style={styles.linkIcon} />
                                 </TouchableOpacity>
-                                <TouchableOpacity onPress={() => Linking.openURL('https://instagram.com/andreluis')}>
+                                <TouchableOpacity onPress={() => Linking.openURL('https://www.instagram.com/andre.l.a.a')}>
                                     <Ionicons name="logo-instagram" size={24} color="#3A3A3A" style={styles.linkIcon} />
                                 </TouchableOpacity>
                             </View>
@@ -68,9 +68,6 @@ export default function AboutScreen() {
                             <Text style={styles.creditName}>Gláucia</Text>
                             <Text style={styles.creditRole}>Designer Responsável</Text>
                             <View style={styles.links}>
-                                <TouchableOpacity onPress={() => Linking.openURL('https://github.com/glauciabs')}>
-                                    <Ionicons name="logo-github" size={24} color="#3A3A3A" />
-                                </TouchableOpacity>
                                 <TouchableOpacity onPress={() => Linking.openURL('https://linkedin.com/in/glauciabs')}>
                                     <Ionicons name="logo-linkedin" size={24} color="#3A3A3A" style={styles.linkIcon} />
                                 </TouchableOpacity>
