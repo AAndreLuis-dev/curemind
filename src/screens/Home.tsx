@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     notIcon: { right: 13 },
     dateSection: { alignItems: 'center', paddingVertical: 16, position: 'relative' },
     iconSection: { position: 'absolute', right: 16, top: 0 },
-    calendarIcon: { marginBottom: 8, marginLeft: 50 },
+    calendarIcon: { marginBottom: 8, marginLeft: 60 },
     calendarImage: { width: 60, height: 60, marginLeft: 30 },
     dateText: { fontSize: 20, fontWeight: '500', color: '#3A3A3A' },
     dateList: { flexDirection: 'row', justifyContent: 'space-evenly', width: '100%', marginTop: 16 },

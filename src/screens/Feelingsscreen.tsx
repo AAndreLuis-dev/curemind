@@ -48,11 +48,12 @@ const FeelingsScreen: React.FC = () => {
 
             {/* Barra de Navegação Inferior */}
             <View style={styles.footer}>
-                <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-                    <Text style={styles.footerButtonText}>Pular</Text>
-                </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                     <Text style={styles.footerButtonText}>Voltar</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => navigation.navigate('LifeStyle')}>
+                    <Text style={styles.footerButtonText}>Pular</Text>
                 </TouchableOpacity>
             </View>
         </View>

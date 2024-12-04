@@ -31,7 +31,7 @@ export default function AdmListScreen() {
             image: require('../../assets/layza.png'),
         },
         {
-            name: "letsfjesus~",
+            name: "letsfjesus",
             description: "Pessoa atenta aos detalhes, está sempre observando ao redor, reservada e introvertida, é focada e criativa.",
             image: require('../../assets/lets.png'),
         },
