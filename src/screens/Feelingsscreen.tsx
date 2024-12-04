@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { RootStackParamList } from '../routes/stack.routes';
 
 const FeelingsScreen: React.FC = () => {
-    const [selectedFeeling, setSelectedFeeling] = useState<string | null>(null);
-
-    // Tipando o hook de navegação
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
     const feelings = [
@@ -17,36 +14,30 @@ const FeelingsScreen: React.FC = () => {
     ];
 
     const handleSelection = (id: string) => {
-        setSelectedFeeling(id);
-    };
-
-    const handleNext = () => {
-        if (selectedFeeling) {
-            // Você pode adicionar lógica para salvar o estado aqui antes de navegar
-            navigation.navigate('LifeStyle'); // Altere para a próxima tela se necessário
-        } else {
-            alert('Por favor, selecione um sentimento antes de avançar.');
-        }
+        // Realize aqui qualquer ação necessária, como salvar o estado selecionado
+        navigation.navigate('LifeStyle'); // Altere para a próxima tela desejada
     };
 
     return (
         <View style={styles.container}>
+            {/* Header */}
             <View style={styles.header}>
                 <Image source={require('../../assets/logoIcon.png')} style={styles.logo} />
                 <TouchableOpacity style={styles.profileButton}>
                     <Text style={styles.profileIcon}>👤</Text>
                 </TouchableOpacity>
             </View>
+
+            {/* Pergunta */}
             <Text style={styles.title}>Como você se sente ao acordar?</Text>
             <Text style={styles.subtitle}>(Selecione a imagem que melhor representa)</Text>
+
+            {/* Cartões de Sentimentos */}
             <View style={styles.feelingsContainer}>
                 {feelings.map((feeling) => (
                     <TouchableOpacity
                         key={feeling.id}
-                        style={[
-                            styles.feelingCard,
-                            selectedFeeling === feeling.id && styles.selectedFeelingCard,
-                        ]}
+                        style={styles.feelingCard}
                         onPress={() => handleSelection(feeling.id)}
                     >
                         <Image source={feeling.image} style={styles.feelingImage} />
@@ -54,12 +45,14 @@ const FeelingsScreen: React.FC = () => {
                     </TouchableOpacity>
                 ))}
             </View>
+
+            {/* Barra de Navegação Inferior */}
             <View style={styles.footer}>
                 <TouchableOpacity onPress={() => navigation.navigate('Home')}>
                     <Text style={styles.footerButtonText}>Pular</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={handleNext} style={styles.footerButton}>
-                    <Text style={styles.footerButtonText}>Avançar</Text>
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <Text style={styles.footerButtonText}>Voltar</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -70,7 +63,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
-        backgroundColor: '#0047AB' // Exemplo de gradiente
+        backgroundColor: '#0047AB',
     },
     header: {
         flexDirection: 'row',
@@ -87,13 +80,13 @@ const styles = StyleSheet.create({
         width: 40,
         height: 40,
         borderRadius: 20,
-        backgroundColor: '#0047AB',
+        backgroundColor: '#FFFFFF',
         justifyContent: 'center',
         alignItems: 'center',
     },
     profileIcon: {
         fontSize: 18,
-        color: '#000',
+        color: '#0047AB',
     },
     title: {
         fontSize: 24,
@@ -120,13 +113,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         borderRadius: 10,
         alignItems: 'center',
-        marginTop: 80,
         marginBottom: 20,
         elevation: 5,
-    },
-    selectedFeelingCard: {
-        borderWidth: 2,
-        borderColor: '#0047AB',
     },
     feelingImage: {
         width: 100,
@@ -141,18 +129,12 @@ const styles = StyleSheet.create({
     footer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-    },
-    footerButton: {
-        backgroundColor: '#FFFFFF',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        borderRadius: 10,
-        elevation: 2,
+        marginTop: 20,
     },
     footerButtonText: {
         fontSize: 16,
         fontWeight: 'bold',
-        color: '#0047AB',
+        color: '#FFFFFF',
     },
 });
 
