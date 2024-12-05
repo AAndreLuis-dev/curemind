@@ -12,26 +12,26 @@ export default function HomeScreen() {
     const [backgroundColor, setBackgroundColor] = useState('#f5f5f5');
     const insets = useSafeAreaInsets();
     const handleEmotionPress = (emotion: string) => {
+        let color = '#f5f5f5';
         switch (emotion) {
             case 'Feliz':
-                setBackgroundColor('#e8f5e9');
+                color = '#e8f5e9';
                 break;
             case 'Triste':
-                setBackgroundColor('#ffebee');
+                color = '#ffebee';
                 break;
             case 'Ansioso':
-                setBackgroundColor('#fffde7');
+                color = '#fffde7';
                 break;
             case 'Calmo':
-                setBackgroundColor('#f5f5f5');
+                color = '#f5f5f5';
                 break;
-            default:
-                setBackgroundColor('#f5f5f5');
         }
+        setBackgroundColor(color);
     };
 
-    const days = ["D", "T", "Q", "Q", "S", "S"];
-    const dates = [3, 4, 5, 6, 7, 8];
+    const days = ["Q", "Q", "S", "S", "D", "S"];
+    const dates = [4, 5, 6, 7, 8, 9];
     const dailyContent = [
         { id: '1', title: 'Importância do profissional', image: require('../../assets/profissionalSaude.png') },
         { id: '2', title: 'Como lidar com o estresse', image: require('../../assets/estresse.png') },
@@ -45,6 +45,7 @@ export default function HomeScreen() {
             paddingBottom: insets.bottom,
             paddingLeft: insets.left,
             paddingRight: insets.right,
+            backgroundColor: backgroundColor
         }}>
             <View style={styles.header}>
                 <ImageBackground source={require('../../assets/logoIcon.png')} style={styles.logoIcon} />
@@ -53,7 +54,7 @@ export default function HomeScreen() {
             </View>
 
             <View style={styles.dateSection}>
-                <Text style={styles.dateText}>4 de novembro</Text>
+                <Text style={styles.dateText}>5 de dezembro</Text>
                 <FlatList
                     horizontal
                     data={dates}
