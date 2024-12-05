@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import Footer from "../components/Footer";
 import {NavigationProp, useNavigation} from "@react-navigation/native";
 import {RootStackParamList} from "../routes/stack.routes";
+import {useSafeAreaInsets} from "react-native-safe-area-context";
 
 export default function ContentScreen() {
     const contentItems = [
@@ -24,9 +25,15 @@ export default function ContentScreen() {
     const handleSubmit = () => {
         navigation.navigate('AnxietyChat');
     };
-
+    const insets = useSafeAreaInsets();
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={{
+            flex: 1,
+            paddingTop: insets.top,
+            paddingBottom: insets.bottom,
+            paddingLeft: insets.left,
+            paddingRight: insets.right,
+        }}>
             <View style={styles.header}>
                 <Image
                     source={require('../../assets/logoIcon.png')}

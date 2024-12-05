@@ -2,6 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, SafeAreaView, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Footer from "../components/Footer";
+import {useSafeAreaInsets} from "react-native-safe-area-context";
+import {NavigationProp, useNavigation} from "@react-navigation/native";
+import {RootStackParamList} from "../routes/stack.routes";
 
 export default function AdmListScreen() {
     const admins = [
@@ -38,9 +41,17 @@ export default function AdmListScreen() {
     ];
 
     const about = (() => window.location.href = '../home/AboutScreen');
+    const insets = useSafeAreaInsets();
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={{
+            flex: 1,
+            paddingTop: insets.top,
+            paddingBottom: insets.bottom,
+            paddingLeft: insets.left,
+            paddingRight: insets.right,
+        }}>
             {/* Cabeçalho */}
             <View style={styles.header}>
                 <Image source={require('../../assets/logoIcon.png')} style={styles.logo} />
@@ -54,14 +65,21 @@ export default function AdmListScreen() {
             {/* Lista de ADMs */}
             <ScrollView style={styles.scrollContainer}>
                 {admins.map((admin, index) => (
-                    <View key={index} style={styles.card}>
+                    <TouchableOpacity
+                        key={index}
+                        style={styles.card}
+                        onPress={() => navigation.navigate("ChatScreen", {
+                            adminName: admin.name,
+                            adminImage: admin.image, // Mantém o require()
+                        })}
+                    >
                         <Image source={admin.image} style={styles.profilePic} />
                         <View style={styles.cardContent}>
                             <Text style={styles.cardTitle}>{admin.name}</Text>
                             <Text style={styles.cardDescription}>{admin.description}</Text>
                         </View>
                         <Ionicons name="search-outline" size={20} color="#3A3A3A" />
-                    </View>
+                    </TouchableOpacity>
                 ))}
             </ScrollView>
 

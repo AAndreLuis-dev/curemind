@@ -5,11 +5,12 @@ import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { RootStackParamList } from '../routes/stack.routes';
 import Footer from "../components/Footer";
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
     const [backgroundColor, setBackgroundColor] = useState('#f5f5f5');
-
+    const insets = useSafeAreaInsets();
     const handleEmotionPress = (emotion: string) => {
         switch (emotion) {
             case 'Feliz':
@@ -38,7 +39,13 @@ export default function HomeScreen() {
     ];
 
     return (
-        <SafeAreaView style={[styles.container, { backgroundColor }]}>
+        <SafeAreaView style={{
+            flex: 1,
+            paddingTop: insets.top,
+            paddingBottom: insets.bottom,
+            paddingLeft: insets.left,
+            paddingRight: insets.right,
+        }}>
             <View style={styles.header}>
                 <ImageBackground source={require('../../assets/logoIcon.png')} style={styles.logoIcon} />
                 <FontAwesome name="user-circle" size={24} color="#3A3A3A" />
@@ -141,7 +148,6 @@ export default function HomeScreen() {
         </SafeAreaView>
     );
 }
-
 const styles = StyleSheet.create({
     container: { flex: 1 },
     header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 10, marginTop: 20 },

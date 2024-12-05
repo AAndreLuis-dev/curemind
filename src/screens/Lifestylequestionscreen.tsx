@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import {View, Text, TouchableOpacity, Image, StyleSheet, SafeAreaView} from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { RootStackParamList } from '../routes/stack.routes';
 
@@ -11,7 +11,7 @@ const LifestyleQuestionScreen = () => {
     };
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <View style={styles.header}>
                 <Image source={require('../../assets/logoIcon.png')} style={styles.logo} />
                 <TouchableOpacity style={styles.profileButton}>
@@ -42,7 +42,7 @@ const LifestyleQuestionScreen = () => {
                     <Text style={styles.navigationText}>Pular</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+        </SafeAreaView>
     );
 };
 

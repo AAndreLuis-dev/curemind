@@ -11,6 +11,8 @@ import AnxietyBatePapo from "../screens/Anxietybatepapo";
 import ComfortScenarioScreen from "../screens/Comfortscenarioscreen";
 import ContentScreen from "../screens/Contentscreen";
 import ImprovementQuestionScreen from "../screens/Improvementquestionscreen";
+import ChatScreen from "../screens/ChatScreen";
+
 
 // Defina a lista de rotas com suas respectivas props
 export type RootStackParamList = {
@@ -26,6 +28,7 @@ export type RootStackParamList = {
     ComfortScenario: undefined;
     Content: undefined;
     Improvement: undefined;
+    ChatScreen: { adminName: string; adminImage: any };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -45,6 +48,7 @@ export default function AppStack() {
             <Stack.Screen name="ComfortScenario" component={ComfortScenarioScreen} />
             <Stack.Screen name="Content" component={ContentScreen} />
             <Stack.Screen name="Improvement" component={ImprovementQuestionScreen} />
+            <Stack.Screen name="ChatScreen" component={ChatScreen} />
         </Stack.Navigator>
     );
 }

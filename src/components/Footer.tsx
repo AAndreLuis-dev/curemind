@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import {View, TouchableOpacity, Text, StyleSheet, SafeAreaView} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import {NavigationProp, useNavigation} from "@react-navigation/native";
 import {RootStackParamList} from "../routes/stack.routes";
@@ -8,7 +8,7 @@ import {RootStackParamList} from "../routes/stack.routes";
 const Footer = () => {
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
     return (
-        <View style={styles.footer}>
+        <SafeAreaView style={styles.footer}>
             <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Home')}>
                 <Ionicons name="home-outline" size={24} color="#3A3A3A" />
                 <Text style={styles.navText}>Início</Text>
@@ -29,7 +29,7 @@ const Footer = () => {
                 <Ionicons name="people-outline" size={24} color="#3A3A3A" />
                 <Text style={styles.navText}>Comunidade</Text>
             </TouchableOpacity>
-        </View>
+        </SafeAreaView>
     );
 };
 
